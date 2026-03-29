@@ -54,15 +54,14 @@ unsigned int faStr2(const char *str)
 {
     const char *pointer = str;
     char currentChar = *str;
-    char prevChar = ' ';
     int count = 0;
     bool firstLetter, isWord, onlyFirstUpper;
 
-    while (true) //первый аппер -) нет больше апперов -) к++
+    while (true) // первый аппер -) нет больше апперов -) к++
     {
         firstLetter = true;
         isWord = false;
-        onlyFirstUpper  = false;
+        onlyFirstUpper = false;
         while (currentChar != '\0' && currentChar != ' ' && currentChar != '\t' && currentChar != '\n') // пока мы в слове
         {
             isWord = true;
@@ -70,9 +69,8 @@ unsigned int faStr2(const char *str)
                 onlyFirstUpper = true;
             if (!firstLetter && !islower(currentChar))
                 onlyFirstUpper = false;
-                
+
             pointer++;
-            prevChar = currentChar;
             currentChar = *pointer;
             firstLetter = false;
         }
@@ -81,7 +79,6 @@ unsigned int faStr2(const char *str)
         if (currentChar == '\0')
             break;
         pointer++;
-        prevChar = currentChar;
         currentChar = *pointer;
     }
     return count;
@@ -91,5 +88,36 @@ unsigned int faStr2(const char *str)
 // округляя ее до целого значения по правилам округления.
 unsigned int faStr3(const char *str)
 {
-    return 0;
+    unsigned int currentLen, avLength = 0;
+    int i = 0;
+    int sum = 0;
+    const char *pointer = str;
+    char currentChar = *str;
+    bool isWord;
+
+    while (true)
+    {
+        isWord = false;
+        currentLen = 0;
+        while (currentChar != '\0' && currentChar != ' ' && currentChar != '\t' && currentChar != '\n') // пока мы в слове
+        {
+            isWord = true;
+            currentLen++;
+            pointer++;
+            currentChar = *pointer;
+        }
+
+        if (isWord)
+        {
+            sum += currentLen;
+            i++;
+            avLength = (sum+i/2)/i;
+        }
+        if (currentChar == '\0')
+            break;
+        pointer++;
+        currentChar = *pointer;
+    }
+    
+    return avLength;
 }
