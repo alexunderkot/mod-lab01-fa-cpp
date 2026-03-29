@@ -1,13 +1,12 @@
 // Copyright 2022 UNN-IASR
-#include "../include/fun.h"
 #include <map>
 #include <cctype>
+#include "../include/fun.h"
 
-// Разработать функцию на языке С++, 
+// Разработать функцию на языке С++,
 // которая в переданной строке определяет слова,
 // не содержащие цифр и подсчитывает количество таких слов.
-unsigned int faStr1(const char *str)
-{
+unsigned int faStr1(const char *str){
     std::map<char, int> numbers;
     numbers.insert({{'0', 0},
                     {'1', 1},
@@ -25,12 +24,12 @@ unsigned int faStr1(const char *str)
     int count = 0;
     bool hasNums, isWord;
 
-    // слово началось или уже идёт(текущий не пробел или изСлово) -) 
+    // слово началось или уже идёт(текущий не пробел или изСлово) -)
     // нет цифр -) текущий стал пробелом -) выход
     while (true) {
         hasNums = false;
         isWord = false;
-        while (currentChar != '\0' && currentChar != ' ' 
+        while (currentChar != '\0' && currentChar != ' '
             && currentChar != '\t' && currentChar != '\n') { // пока мы в слове
             isWord = true;
             if (numbers.count(currentChar))
@@ -48,12 +47,11 @@ unsigned int faStr1(const char *str)
     return count;
 }
 
-// Разработать функцию на языке С++, 
+// Разработать функцию на языке С++,
 // которая в переданной строке подсчитывает количество слов,
 // начинающиеся на заглавную латинскую букву,
 // а среди других символов этих слов только латинские строчные буквы.
-unsigned int faStr2(const char *str)
-{
+unsigned int faStr2(const char *str){
     const char *pointer = str;
     char currentChar = *str;
     int count = 0;
@@ -63,7 +61,7 @@ unsigned int faStr2(const char *str)
         firstLetter = true;
         isWord = false;
         onlyFirstUpper = false;
-        while (currentChar != '\0' && currentChar != ' ' 
+        while (currentChar != '\0' && currentChar != ' '
             && currentChar != '\t' && currentChar != '\n') { // пока мы в слове
             isWord = true;
             if (firstLetter && isupper(currentChar))
@@ -88,8 +86,7 @@ unsigned int faStr2(const char *str)
 // Разработать функцию на языке С++,
 // которая находит среднюю длину слова в строке,
 // округляя ее до целого значения по правилам округления.
-unsigned int faStr3(const char *str)
-{
+unsigned int faStr3(const char *str){
     unsigned int currentLen, avLength = 0;
     int i = 0;
     int sum = 0;
