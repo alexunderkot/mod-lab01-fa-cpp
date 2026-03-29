@@ -12,11 +12,21 @@ src/main.cpp - демонстрационная программа.*/
 
 int main()
 {
-    printf("%d\t",faStr1(""));                         // 0
-    printf("%d\t",faStr1("hello"));                    // 1
-    printf("%d\t",faStr1("hello world"));              // 2
-    printf("%d\t",faStr1("hello123 world"));           // 1
-    printf("%d\t",faStr1("123 456"));                  // 0
-    printf("%d\t",faStr1("  hello   world  "));        // 2
-    printf("%d\t",faStr1("hello\tworld\nfoo123 bar")); // 3
+    printf("%d\t", faStr1(""));                         // 0
+    printf("%d\t", faStr1("hello"));                    // 1
+    printf("%d\t", faStr1("hello world"));              // 2
+    printf("%d\t", faStr1("hello123 world"));           // 1
+    printf("%d\t", faStr1("123 456"));                  // 0
+    printf("%d\t", faStr1("  hello   world  "));        // 2
+    printf("%d\t", faStr1("hello\tworld\nfoo123 bar")); // 3
+
+    printf("\n%d\t", faStr2(""));                  // 0
+    printf("%d\t", faStr2("Hello"));             // 1
+    printf("%d\t", faStr2("Hello world"));       // 1
+    printf("%d\t", faStr2("Hello World"));       // 2
+    printf("%d\t", faStr2("hello World"));       // 1
+    printf("%d\t", faStr2("Hello123"));          // 0
+    printf("%d\t", faStr2("Hello world123"));    // 1
+    printf("%d\t", faStr2("HelLo World!"));      // 0
+    printf("%d\t", faStr2("A B C"));             // 3
 }

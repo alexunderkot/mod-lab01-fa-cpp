@@ -1,6 +1,7 @@
 // Copyright 2022 UNN-IASR
 #include "../include/fun.h"
 #include <map>
+#include <cctype>
 
 // Разработать функцию на языке С++, которая в переданной строке определяет слова,
 // не содержащие цифр и подсчитывает количество таких слов.
@@ -47,10 +48,43 @@ unsigned int faStr1(const char *str)
 }
 
 // Разработать функцию на языке С++, которая в переданной строке подсчитывает количество слов,
-// начинающиеся на заглавную латинскую букву, а среди других символов этих слов только латинские строчные буквы.
+// начинающиеся на заглавную латинскую букву,
+// а среди других символов этих слов только латинские строчные буквы.
 unsigned int faStr2(const char *str)
 {
-    return 0;
+    const char *pointer = str;
+    char currentChar = *str;
+    char prevChar = ' ';
+    int count = 0;
+    bool firstLetter, isWord, onlyFirstUpper;
+
+    while (true) //первый аппер -) нет больше апперов -) к++
+    {
+        firstLetter = true;
+        isWord = false;
+        onlyFirstUpper  = false;
+        while (currentChar != '\0' && currentChar != ' ' && currentChar != '\t' && currentChar != '\n') // пока мы в слове
+        {
+            isWord = true;
+            if (firstLetter && isupper(currentChar))
+                onlyFirstUpper = true;
+            if (!firstLetter && !islower(currentChar))
+                onlyFirstUpper = false;
+                
+            pointer++;
+            prevChar = currentChar;
+            currentChar = *pointer;
+            firstLetter = false;
+        }
+        if (onlyFirstUpper && isWord)
+            count++;
+        if (currentChar == '\0')
+            break;
+        pointer++;
+        prevChar = currentChar;
+        currentChar = *pointer;
+    }
+    return count;
 }
 
 // Разработать функцию на языке С++, которая находит среднюю длину слова в строке,
