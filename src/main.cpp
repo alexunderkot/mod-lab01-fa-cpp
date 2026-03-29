@@ -9,8 +9,7 @@ src/main.cpp - демонстрационная программа.*/
 #include <stdio.h>
 #include "../include/fun.h"
 
-int main()
-{
+int main() {
     printf("%d\t", faStr1(""));                         // 0
     printf("%d\t", faStr1("hello"));                    // 1
     printf("%d\t", faStr1("hello world"));              // 2
