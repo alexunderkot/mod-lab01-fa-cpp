@@ -3,7 +3,8 @@
 #include <map>
 #include <cctype>
 
-// Разработать функцию на языке С++, которая в переданной строке определяет слова,
+// Разработать функцию на языке С++, 
+// которая в переданной строке определяет слова,
 // не содержащие цифр и подсчитывает количество таких слов.
 unsigned int faStr1(const char *str)
 {
@@ -24,13 +25,13 @@ unsigned int faStr1(const char *str)
     int count = 0;
     bool hasNums, isWord;
 
-    // слово началось или уже идёт(текущий не пробел или изСлово) -) нет цифр -) текущий стал пробелом -) выход
-    while (true)
-    {
+    // слово началось или уже идёт(текущий не пробел или изСлово) -) 
+    // нет цифр -) текущий стал пробелом -) выход
+    while (true) {
         hasNums = false;
         isWord = false;
-        while (currentChar != '\0' && currentChar != ' ' && currentChar != '\t' && currentChar != '\n') // пока мы в слове
-        {
+        while (currentChar != '\0' && currentChar != ' ' 
+            && currentChar != '\t' && currentChar != '\n') { // пока мы в слове
             isWord = true;
             if (numbers.count(currentChar))
                 hasNums = true;
@@ -47,7 +48,8 @@ unsigned int faStr1(const char *str)
     return count;
 }
 
-// Разработать функцию на языке С++, которая в переданной строке подсчитывает количество слов,
+// Разработать функцию на языке С++, 
+// которая в переданной строке подсчитывает количество слов,
 // начинающиеся на заглавную латинскую букву,
 // а среди других символов этих слов только латинские строчные буквы.
 unsigned int faStr2(const char *str)
@@ -57,13 +59,12 @@ unsigned int faStr2(const char *str)
     int count = 0;
     bool firstLetter, isWord, onlyFirstUpper;
 
-    while (true) // первый аппер -) нет больше апперов -) к++
-    {
+    while (true) { // первый аппер -) нет больше апперов -) к++
         firstLetter = true;
         isWord = false;
         onlyFirstUpper = false;
-        while (currentChar != '\0' && currentChar != ' ' && currentChar != '\t' && currentChar != '\n') // пока мы в слове
-        {
+        while (currentChar != '\0' && currentChar != ' ' 
+            && currentChar != '\t' && currentChar != '\n') { // пока мы в слове
             isWord = true;
             if (firstLetter && isupper(currentChar))
                 onlyFirstUpper = true;
@@ -84,7 +85,8 @@ unsigned int faStr2(const char *str)
     return count;
 }
 
-// Разработать функцию на языке С++, которая находит среднюю длину слова в строке,
+// Разработать функцию на языке С++,
+// которая находит среднюю длину слова в строке,
 // округляя ее до целого значения по правилам округления.
 unsigned int faStr3(const char *str)
 {
@@ -95,20 +97,18 @@ unsigned int faStr3(const char *str)
     char currentChar = *str;
     bool isWord;
 
-    while (true)
-    {
+    while (true) {
         isWord = false;
         currentLen = 0;
-        while (currentChar != '\0' && currentChar != ' ' && currentChar != '\t' && currentChar != '\n') // пока мы в слове
-        {
+        while (currentChar != '\0' && currentChar != ' '
+             && currentChar != '\t' && currentChar != '\n') { // пока мы в слове
             isWord = true;
             currentLen++;
             pointer++;
             currentChar = *pointer;
         }
 
-        if (isWord)
-        {
+        if (isWord) {
             sum += currentLen;
             i++;
             avLength = (sum+i/2)/i;
@@ -118,6 +118,5 @@ unsigned int faStr3(const char *str)
         pointer++;
         currentChar = *pointer;
     }
-    
     return avLength;
 }

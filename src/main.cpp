@@ -7,7 +7,6 @@ include/fun.h - заголовочный файл с заголовком фун
 src/fun.cpp - файл с реализацией функции.
 src/main.cpp - демонстрационная программа.*/
 #include "../include/fun.h"
-#include "fun.cpp"
 #include <stdio.h>
 
 int main()
